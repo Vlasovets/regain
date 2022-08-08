@@ -10,10 +10,9 @@ source:
   sha256: 03a83d3c58c36f71cdf2be5a987630a0a603c190a7acc62a085bb45deca2699e
 
 build:
-  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  skip: True  # [win]
 
 requirements:
   host:
@@ -28,7 +27,6 @@ requirements:
 test:
   imports:
     - regain
-    - regain.tests
   requires:
     - pip
   commands:
@@ -40,7 +38,7 @@ about:
   description: |
     Regularised graph inference across multiple time stamps, considering the influence of latent variables. 
     It inherits functionalities from the scikit-learn package.
-  license: BSD 3-Clause License
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   doc_url: https://github.com/fdtomasi/regain
